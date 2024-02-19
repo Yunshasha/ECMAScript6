@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test </title>
+</head>
+<body>
+
+    <script>
+
+        const map1 = new Map([[1, 2], [2, 3]])
+        const arr = [...map1]
+        console.log(arr);
+
+
+        const obj1 = {
+                name: 'shasha',
+                surname: 'yun'
+            }
+
+        const objextend = {
+                age: 18
+            }
+        const obj2 = { ...obj1, ...objextend }
+        console.log(obj2);
+        obj2.age = 25
+        console.log(obj2);
+
+        console.log({ ...obj2, age: 25 });
+
+
+        async function f1() {
+
+            return 'a';
+
+            }
+        const f2 = async () => { return 'B' }
+        console.log(f2);
+
+        async function f3() {
+
+            const a = await f1()
+            const b = await f2()
+            console.log([a, b]);
+        }
+        f3()
+
+        Promise.all([f1(), f2()]).then((result) => {
+            console.log(result);
+            })
+
+        const prices = [12, 20, 18]
+        const newPriceArray = [...prices]
+        console.log(newPriceArray);
+
+        var alphabets = ["A", ..."BCD", "E"];
+        console.log(alphabets);
+
+        const max = Math.max(...'43210')
+        console.log(max);
+
+        const p = new Promise((resolve,reject) =>{
+            setTimeout(() => {
+                resolve('success')
+            }, 1500);
+        })
+
+        p.then((result) => {
+            console.log(result);
+        }).catch((err) => {
+            throw new Error('that doesnt work')
+        })
+
+        
+        const arr6 = [1, 1];
+const [d, e = 2] = arr6;
+console.log(d, e);
+
+
+
+function getPerson({ firstName, lastName }) {
+  console.log(arguments);     // 输出整个 arguments 对象
+  console.log(arguments[0]);  // 输出 arguments 对象的第一个元素
+  return { ...arguments[0], fullName: firstName + ' ' + lastName };
+}
+
+const result = getPerson({ firstName: 'shasha', lastName: 'yun' });
+console.log(result);
+
+        const pro1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('first promise')
+            }, 500);
+        })
+        const pro2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject('Second promise')
+            }, 1000);
+        })
+        // pro1.then(content => {console.log(content);
+        // return pro2}).then(content=>console.log(content)).catch(err => {throw Error ('nononono')})
+
+        Promise.all([pro1,pro2]).then(content => console.log(content)).catch(err => console.log(err))
+
+        // Promise.race([pro1,pro2]).then(content => console.log(content)).catch(err => console.log(err))
+
+        const person = {
+            age : 18
+        }
+        const proxy = new Proxy(person,{
+            set(target,property,value,receiver){
+                if (property === 'age'){
+                    if(value < 0){
+                        console.error('age cant samller than 0');
+                    }
+                }
+                return Reflect.set(target,property,value,receiver)
+            }
+            
+        })
+
+        proxy.name = 'shasha'
+        console.log(proxy);
+        console.log(person);
+        proxy.age = -1
+        console.log(proxy);
+
+        const arrr = ['arr','bbb','ccc']
+        for (let value of arrr){
+           console.log(value.charAt(0).toUpperCase() + value.slice(1));
+        }
+       
+       const objjjj = {
+            name : 'shasha',
+            surname : 'yun'
+       }
+       
+       for (const val of Object.values(objjjj) ){
+        console.log(val.charAt(0).toUpperCase() + val.slice(1))
+       }
+
+       const objjjjj = {...objjjj,surname : 'song', age : 26}
+       console.log(objjjjj);
+
+        
+
+    </script>
+    
+</body>
+</html>

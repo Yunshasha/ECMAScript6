@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>some ways to use spread operator</title>
+</head>
+<body>
+    <!-- spread operator is to get the every element of （iteratable object）an array ,string, object, arguments of function, map and set  -->
+
+    <script>
+        
+        //1,add the elements of an existing array into a new array
+
+        const certsToAdd = ['Algorithms and data structure', 'Front End Libraries']
+
+        const certifacations = ['Web Design', ...certsToAdd,'APIs and microservices', 'Quality Assurance and Information Security']
+
+        console.log(certifacations);
+
+        // pass element of an array as arguments to a function
+        function addThreeNUmber(x,y,z){
+            console.log(x+y+z);
+        }
+        const args = [1,2,3]
+        addThreeNUmber(...args)
+
+        //copy arrays
+        const arr = [1,2,3]
+        const arr2 =[...arr]
+        arr2.push(4)
+        console.log(arr);
+        console.log(arr2);
+
+        //concatenate arrays
+        let arr3 = [1,2,3]
+        let arr4 = ['shasha',2,3,4]
+        arr3 = arr3.concat(arr4)
+        console.log(arr3);
+        arr4 = [...arr4,'addOneMore',...arr3]
+        console.log(arr4);
+        
+
+        //
+        const a = 'string'
+        console.log(...a);
+        const b = 'another'
+        const addAB = [...b,...a] 
+        console.log(addAB);
+        console.log(b + a);
+
+        //speard operater on object
+        const obj = {
+            name : 'shasha'
+        }
+
+        const obj2 = {
+            surname : 'yun'
+        }
+
+        const obj3 = {...obj,...obj2}
+        console.log(obj3);
+
+        const obj4 = {...obj3}
+        console.log(obj4);
+        obj4.age = 18
+        console.log(obj4);
+        const obj5 = {...obj4, age : 26}
+        console.log(obj5);
+        const {name,surname,age} = obj5
+        console.log(name);
+
+        //spread operator on map and set
+        const set1 = new Set(arr)
+        console.log(set1);
+        const set2 = new Set(arr2)
+        const set3 = new Set([...set2,...set1])  
+        console.log(...set1,1,2,...set2);
+        console.log(set3);
+
+
+        const map1 = new Map([arr])
+        console.log(arr);
+        console.log(map1);
+        const test1 = [1,'lala']
+        const test2 = [2,'mimi']
+        const map2 = new Map([test1,test2])
+        console.log(map2);
+        for(const [key,value] of map2.entries()){
+            console.log(key,value);
+        }
+        const [x,y] = map2
+        console.log(x);
+
+        const map = new Map([
+        ['a', 1],
+        ['b', 2],
+        ['c', 3]
+        ]);
+
+        for (const [key, value] of map) {
+        console.log(key, value);
+        }
+
+      
+        
+
+    </script>
+    
+</body>
+</html>

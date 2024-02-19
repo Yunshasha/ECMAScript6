@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest operator</title>
+</head>
+<body>
+
+    <!-- rest operator collect different elements into an array, only used in function formal parameters -->
+    <script>
+        //collect rest actual arguments into an array and put it as a formal parameters of the function
+
+        function multiply(num,...restArgs) {
+            const result = restArgs.map(function (value) {
+                value *= num
+                return value   
+            })
+
+            return result
+            
+        }
+
+        console.log(multiply(10,2,3,4,5,6))
+
+        function showArray(name,...args){
+            console.log(`${name} + ${args}`)
+            console.log(args)
+        }
+        showArray('array',1,2,3,4,5)
+
+        showArray('object','haha','lulu')
+
+    </script>
+    
+</body>
+</html>
